@@ -23,6 +23,7 @@ export async function GET(req) {
   const local = process.env.NODE_ENV === "development";
   let browser;
   try {
+	chromium.setGraphicsMode = false;
     if (!local) await chromium.font(path.join(process.cwd(), "fonts", "NotoSansArabic-Regular.ttf"));
     browser = await puppeteer.launch(
       local
