@@ -14,7 +14,7 @@ function Shot() {
     if (!id) { setError("No tweet link found in what was shared."); return; }
     let objUrl;
     fetch(`/api/shot?id=${id}`)
-      .then((r) => { if (!r.ok) throw new Error("Could not render this tweet."); return r.blob(); })
+      .then(async (r) => { if (!r.ok) throw new Error(await r.text()); return r.blob(); })
       .then((b) => { setBlob(b); objUrl = URL.createObjectURL(b); setSrc(objUrl); })
       .catch((e) => setError(e.message));
     return () => objUrl && URL.revokeObjectURL(objUrl);
@@ -31,9 +31,7 @@ function Shot() {
         <>
           <img src={src} alt="Tweet screenshot" style={{ width: "100%", borderRadius: 12 }} />
           <div style={{ display: "flex", gap: 8, marginTop: 12 }}>
-            {canShare && (
-              <button style={btn} onClick={() => navigator.share({ files: [file] })}>Share / Save</button>
-            )}
+            {canShare && <button style={btn} onClick={() => navigator.share({ files: [file] })}>Share / Save</button>}
             <a style={{ ...btn, textDecoration: "none" }} href={src} download={`tweet-${id}.png`}>Download</a>
           </div>
         </>

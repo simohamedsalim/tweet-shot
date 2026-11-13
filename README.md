@@ -1,18 +1,10 @@
-# Tweet Shot
+# Tweet Shot v2
 
-## Deploy
-1. `npm install`
-2. Push to GitHub, import in Vercel (or run `npx vercel --prod`).
-3. In Vercel > Settings > Deployment Protection, make sure the production URL is public
-   (the screenshot route calls your own /t/[id] page).
+Deploy: push to GitHub, import in Vercel. No env vars needed.
 
-## Android
-Open the deployed URL in Chrome > menu > Install app. "Tweet Shot" now appears in the share sheet.
+Test after deploy (replace the id with any public tweet id):
+  https://YOUR-APP.vercel.app/api/shot?id=1234567890123456789
+You should get a PNG back.
 
-## iOS (Shortcut)
-Shortcuts > New > Shortcut details: enable "Show in Share Sheet", accept URLs.
-1. Get Contents of URL: https://YOUR-APP.vercel.app/api/shot?url=<Shortcut Input, URL-encoded>
-2. Save to Photo Album (or Copy to Clipboard)
-
-## Local dev
-Set CHROME_PATH to your local Chrome binary, then `npm run dev`.
+Android: open the URL in Chrome > Install app. It then shows in the share sheet.
+iOS Shortcut: "Get Contents of URL" -> https://YOUR-APP.vercel.app/api/shot?url=<Shortcut Input> -> Save to Photo Album.

@@ -1,7 +1,4 @@
-export const metadata = {
-  title: "Tweet Shot",
-  manifest: "/manifest.json",
-};
+export const metadata = { title: "Tweet Shot", manifest: "/manifest.json" };
 export const viewport = { themeColor: "#000000" };
 
 export default function RootLayout({ children }) {
